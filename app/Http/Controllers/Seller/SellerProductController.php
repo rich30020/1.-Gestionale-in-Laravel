@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Auth;
 class SellerProductController extends Controller
 {
     public function index() {
+        $user = auth()->user();
+        $stores = $user->stores;
         $authuserid = Auth::id();
         $stores = Store::where('user_id', $authuserid)->get();
         $subcategories = Subcategory::all(); // Recupera tutte le sottocategorie
